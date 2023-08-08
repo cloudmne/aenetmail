@@ -232,10 +232,10 @@ namespace AE.Net.Mail {
 		private static readonly string[] SpecialHeaders = "Date,To,Cc,Reply-To,Bcc,Sender,From,Message-ID,Importance,Subject".Split(',');
 		public virtual void Save(System.IO.TextWriter txt) {
 			txt.WriteLine("Date: {0}", (Date == DateTime.MinValue ? DateTime.Now : Date).GetRFC2060Date());
-			txt.WriteLine("To: {0}", string.Join("; ", To.Select(x => x.ToString())));
-			txt.WriteLine("Cc: {0}", string.Join("; ", Cc.Select(x => x.ToString())));
-			txt.WriteLine("Reply-To: {0}", string.Join("; ", ReplyTo.Select(x => x.ToString())));
-			txt.WriteLine("Bcc: {0}", string.Join("; ", Bcc.Select(x => x.ToString())));
+			txt.WriteLine("To: {0}", string.Join(", ", To.Select(x => x.ToString())));
+			txt.WriteLine("Cc: {0}", string.Join(", ", Cc.Select(x => x.ToString())));
+			txt.WriteLine("Reply-To: {0}", string.Join(", ", ReplyTo.Select(x => x.ToString())));
+			txt.WriteLine("Bcc: {0}", string.Join(", ", Bcc.Select(x => x.ToString())));
 			if (Sender != null)
 				txt.WriteLine("Sender: {0}", Sender);
 			if (From != null)
